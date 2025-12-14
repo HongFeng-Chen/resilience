@@ -22,7 +22,7 @@
 ## 📦 安装
 
 ```bash
-go get github.com/your-org/resilience
+go get github.com/HongFeng-Chen/resilience
 ```
 
 ---

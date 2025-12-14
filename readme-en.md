@@ -22,7 +22,7 @@ This package provides a production-ready implementation of common resilience pat
 ## 📦 Installation
 
 ```bash
-go get github.com/your-org/resilience
+go get  github.com/HongFeng-Chen/resilience
 ```
 
 ---
@@ -48,7 +48,7 @@ This allows **any policy to be freely composed** with others.
 Retry a function when it fails.
 
 ```go
-policy := resilience.New(3).
+policy := resilience.NewRetry(3).
     Handle(func(err error) bool {
         return errors.Is(err, ErrTransient)
     }).
