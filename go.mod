@@ -1,3 +1,3 @@
 module github.com/HongFeng-Chen/resilience
 
-go 1.25.5
+go 1.20.0
