@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -6,8 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"log"
-	"resilience"
 	"time"
+
+	"github.com/HongFeng-Chen/resilience"
 )
 
 func main() {
