@@ -66,12 +66,14 @@ func (t *Timeout) executeOptimistic(ctx context.Context, fn Func) error {
 	start := time.Now()
 	err := fn(ctx)
 
-	if errors.Is(err, context.DeadlineExceeded) {
-		t.trigger(start, ctx)
-		return ErrTimeout
+	// 1️⃣ 上下文取消优先
+	if errors.Is(ctx.Err(), context.Canceled) {
+		return context.Canceled
 	}
 
-	if ctx.Err() == context.DeadlineExceeded {
+	// 2️⃣ 超时
+	if errors.Is(err, context.DeadlineExceeded) ||
+		errors.Is(ctx.Err(), context.DeadlineExceeded) {
 		t.trigger(start, ctx)
 		return ErrTimeout
 	}
